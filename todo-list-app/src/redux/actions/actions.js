@@ -8,4 +8,6 @@ const toggleTodo = id => ({ type: 'TOGGLE_TODO', id })
 
 const setVisibilityFilter = filter => ({ type: filter })
 
-export { addTodo, toggleTodo, setVisibilityFilter }
+const removeTodo = id => ({type: 'REMOVE_TODO', id})
+
+export { addTodo, toggleTodo, setVisibilityFilter, removeTodo }

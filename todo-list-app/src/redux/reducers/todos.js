@@ -19,10 +19,7 @@ const todos = (state = [], action) => {
     case 'TOGGLE_TODO':
       return state.map(t => todo(t, action))
     case 'REMOVE_TODO':
-      return [
-        ...state.slice(action.id),
-        ...state.slice(action.id + 1, state.lenght)
-      ]
+      return state.filter(t => t.id !== action.id)
     default:
       return state
   }

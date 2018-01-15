@@ -1,23 +1,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { createStore } from 'redux'
-import { Provider } from 'react-redux'
 
-import combinedReducer from './redux/reducers/combinedReducer'
+import { Provider } from 'react-redux'
+import configureStore from './configureStore'
 
 import registerServiceWorker from './registerServiceWorker'
 import App from './react/components/App'
-import { loadState, saveState } from './localStorage'
 
-const persistedState = loadState()
-
-const store = createStore(combinedReducer, persistedState || {})
-
-store.subscribe(() => saveState({ todos: store.getState().todos }))
+const store = configureStore()
 
 ReactDOM.render(
   <Provider store={store}>
-    <App store={store} />
+    <App />
   </Provider>,
   document.getElementById('root')
 )
